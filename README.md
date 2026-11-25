@@ -26,7 +26,7 @@ Retrieve and follow the setup guide in INSTALL_FOR_AGENTS.md inside this reposit
 
 ### Option 2: Standalone CLI (macOS / Linux / Windows · Node.js 20+)
 ```bash
-git clone https://github.com/devopsinvent/sylvawatt-ai.git
+git clone https://github.com/poojadraut55/sylvawatt-ai.git
 cd sylvawatt-ai
 npm install
 cp .env.example .env
