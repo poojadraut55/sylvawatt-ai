@@ -5,6 +5,10 @@
 
 ---
 
+> **What does "SylvaWatt" mean?**  
+> **Sylva** (Latin for forests & living nature) + **Watt** (power & energy).  
+> **SylvaWatt means putting Nature Power & Human Control ABOVE uncontrolled AI power** — stopping hyper-scale AI data centers from draining Earth's fresh drinking water while paying everyday people fairly for idle home PC power.
+
 > **Hyperscale AI data centers consume billions of gallons of fresh drinking water for cooling and strain municipal power grids.**  
 > **Meanwhile, hundreds of millions of gaming PCs, RTX workstations, and Apple Silicon Macs sit idle overnight.**
 
