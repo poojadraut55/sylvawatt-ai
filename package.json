@@ -1,0 +1,20 @@
+{
+  "name": "sylvawatt-ai",
+  "version": "0.1.0",
+  "description": "SylvaWatt AI — Distributed Green Compute Mesh & Home GPU Monetization Platform by DevOps Invent Private Limited.",
+  "main": "src/server.js",
+  "private": true,
+  "author": "DevOps Invent Private Limited",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "express": "^4.22.3"
+  }
+}

@@ -1,0 +1,286 @@
+/* SylvaWatt AI — Green Fintech & Human-Controlled Compute Design System */
+:root {
+  --bg: #07110e;
+  --bg-elev: #0d1c17;
+  --panel: #11241e;
+  --panel-2: #163028;
+  --line: rgba(110, 231, 183, 0.14);
+  --line-strong: rgba(52, 211, 153, 0.34);
+  --text: #ecfdf5;
+  --muted: #94b8ab;
+  --accent: #10b981;
+  --accent-bright: #34d399;
+  --water: #0ea5e9;
+  --water-soft: rgba(14, 165, 233, 0.16);
+  --amber: #f59e0b;
+  --danger: #ef4444;
+  --radius: 14px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top right, #0d2b22 0%, var(--bg) 52%);
+  color: var(--text);
+  font-family: var(--font);
+  min-height: 100vh;
+  line-height: 1.45;
+}
+
+a { color: var(--accent-bright); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.hidden { display: none !important; }
+.muted { color: var(--muted); }
+.small { font-size: 0.84rem; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+/* Buttons & Inputs */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--line-strong);
+  background: var(--panel-2);
+  color: var(--text);
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.btn:hover { transform: translateY(-1px); border-color: var(--accent-bright); }
+.btn.primary {
+  background: linear-gradient(135deg, #059669, #10b981);
+  border-color: #34d399;
+  color: #032016;
+}
+.btn.water {
+  background: linear-gradient(135deg, #0284c7, #0ea5e9);
+  border-color: #38bdf8;
+  color: #031926;
+}
+.btn.warn {
+  background: rgba(245, 158, 11, 0.16);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #fcd34d;
+}
+.btn.sm { padding: 6px 12px; font-size: 0.82rem; border-radius: 8px; }
+.btn.lg { padding: 12px 20px; font-size: 0.98rem; }
+
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], select, textarea {
+  width: 100%;
+  background: rgba(5, 14, 11, 0.85);
+  border: 1px solid var(--line);
+  color: var(--text);
+  padding: 9px 12px;
+  border-radius: 9px;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-bright);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+}
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent-bright);
+  cursor: pointer;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.badge.green { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(52, 211, 153, 0.35); }
+.badge.water { background: var(--water-soft); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.35); }
+.badge.amber { background: rgba(245, 158, 11, 0.16); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.35); }
+.badge.red { background: rgba(239, 68, 68, 0.16); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.35); }
+
+/* Login Gate */
+.login-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px;
+}
+.login-card {
+  width: 100%;
+  max-width: 920px;
+  background: linear-gradient(160deg, var(--panel), #091612);
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+  padding: 34px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 32px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+}
+.brand-row { display: flex; align-items: center; gap: 12px; }
+.brand-row img { width: 38px; height: 38px; border-radius: 9px; }
+.role-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+.role-btn {
+  text-align: left;
+  padding: 13px 15px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(16, 185, 129, 0.06);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.role-btn:hover { border-color: var(--accent-bright); background: rgba(16, 185, 129, 0.14); }
+.role-btn strong { display: block; font-size: 0.95rem; margin-bottom: 2px; }
+
+/* App Shell */
+.app-shell {
+  display: grid;
+  grid-template-columns: 256px 1fr;
+  min-height: 100vh;
+}
+.sidebar {
+  background: rgba(8, 19, 15, 0.95);
+  border-right: 1px solid var(--line);
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.nav-list { display: flex; flex-direction: column; gap: 6px; }
+.nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  border-radius: 10px;
+  font-size: 0.91rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+.nav-item:hover { background: rgba(16, 185, 129, 0.09); color: var(--text); }
+.nav-item.active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(14, 165, 233, 0.12));
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+.main-area {
+  padding: 22px 28px 40px;
+  max-width: 1360px;
+  width: 100%;
+}
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 22px;
+}
+.topbar-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+
+/* Grids & Cards */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.card.highlight { border-color: var(--line-strong); background: linear-gradient(160deg, var(--panel), #0c221b); }
+.card h3 { margin: 0 0 10px; font-size: 1rem; }
+.kpi-val { font-size: 1.72rem; font-weight: 800; letter-spacing: -0.02em; margin: 6px 0 4px; }
+
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+
+.meter-track {
+  width: 100%;
+  height: 9px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+.meter-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--water)); border-radius: 999px; transition: width 0.35s ease; }
+.meter-fill.warn { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+
+.control-row {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.control-row:last-child { border-bottom: none; }
+.control-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 0.9rem; font-weight: 600; }
+
+/* Ad Banner */
+.sponsor-banner {
+  margin-top: 18px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px dashed rgba(56, 189, 248, 0.45);
+  background: linear-gradient(90deg, rgba(14, 165, 233, 0.1), rgba(16, 185, 129, 0.08));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Tables & Lists */
+.list-stack { display: flex; flex-direction: column; gap: 12px; }
+.job-card, .mkt-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+.job-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+.toast {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  background: #064e3b;
+  color: #ecfdf5;
+  border: 1px solid #34d399;
+  padding: 12px 18px;
+  border-radius: 11px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  z-index: 999;
+}
+
+@media (max-width: 980px) {
+  .login-card, .app-shell, .kpi-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .sidebar { border-right: none; border-bottom: 1px solid var(--line); }
+}

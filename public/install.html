@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>60-Second Self-Hosted Installer · SylvaWatt AI</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="login-shell">
+    <div class="card highlight" style="max-width:640px; width:100%; padding:30px;">
+      <div class="brand-row" style="margin-bottom:18px;">
+        <img src="img/mark.svg" alt="DevOps Invent">
+        <div>
+          <span class="badge green">Self-Hosted Operator Wizard</span>
+          <h1 style="margin:4px 0 0; font-size:1.45rem;">SylvaWatt AI v0.1.0 Setup</h1>
+        </div>
+      </div>
+
+      <div class="control-row">
+        <div class="control-head"><span>Node.js 20+ Runtime</span><span class="badge green">READY</span></div>
+        <div class="control-head"><span>SQLite/JSON Atomic Store</span><span class="badge green">WRITABLE</span></div>
+        <div class="control-head"><span>Local Ollama &amp; Host Telemetry</span><span class="badge water">AUTO-DETECT</span></div>
+      </div>
+
+      <form id="install-form" style="display:flex; flex-direction:column; gap:12px; margin-top:16px;">
+        <div>
+          <label class="small muted" for="ins-email">Operator Email</label>
+          <input type="email" id="ins-email" value="admin@sylvawatt.io" required>
+        </div>
+        <div class="grid-2">
+          <div>
+            <label class="small muted" for="ins-fee">Platform Brokerage Fee (%)</label>
+            <input type="number" id="ins-fee" value="12" min="2" max="30">
+          </div>
+          <div>
+            <label class="small muted" for="ins-mode">Environment Mode</label>
+            <select id="ins-mode">
+              <option value="demo">Demo Sandbox Mode</option>
+              <option value="live">Live Production Telemetry</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn primary lg">Complete 60s Setup &amp; Launch Network →</button>
+      </form>
+      <div id="install-status" class="small" style="margin-top:14px;"></div>
+    </div>
+  </div>
+  <script src="js/install.js"></script>
+</body>
+</html>

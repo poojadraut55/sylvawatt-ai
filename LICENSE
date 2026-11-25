@@ -1,0 +1,48 @@
+DEVOPS INVENT SOURCE-AVAILABLE NON-COMMERCIAL COMMUNITY LICENSE (DISA-NC 1.0)
+================================================================================
+
+Copyright (c) 2026 DevOps Invent Private Limited. All Rights Reserved.
+Owner & Exclusive Intellectual Property Holder: DevOps Invent Private Limited
+
+1. PURPOSE & OWNERSHIP
+SylvaWatt AI ("Software"), including all source code, algorithms, telemetry bridges,
+UI interfaces, documentation, and brand assets ("SylvaWatt", "DevOps Invent"), is the
+sole and exclusive intellectual property of DevOps Invent Private Limited ("Owner").
+
+2. PERMITTED FREE & OPEN-SOURCE USES (COMMUNITY, PERSONAL & NATURE PROTECTION)
+Subject to the terms of this License, DevOps Invent Private Limited grants individuals,
+home PC/Mac workstation owners, independent researchers, students, non-profit climate
+alliances, and open-source contributors a worldwide, royalty-free, non-exclusive license to:
+  a) Download, inspect, fork, compile, and run the Software on personal consumer hardware
+     to contribute idle compute toward green distributed AI and water conservation;
+  b) Submit pull requests, hardware telemetry drivers, security audits, thermal protection
+     enhancements, and energy/water efficiency improvements back to this repository.
+
+3. STRICT PROHIBITION ON UNAUTHORIZED COMMERCIAL & ENTERPRISE USE
+YOU MAY NOT use, deploy, distribute, host, white-label, rebrand, sell, rent, sublicense,
+or incorporate this Software (or any derivative work thereof) for any Commercial Purpose or
+Enterprise Purpose without a separate written Commercial Enterprise License Agreement executed
+with DevOps Invent Private Limited.
+
+Prohibited unauthorized activities include, without limitation:
+  - Hosting SylvaWatt AI as a commercial SaaS, managed compute brokerage, or corporate
+    internal cluster platform;
+  - Extracting core algorithms or UI components to power proprietary enterprise products;
+  - Stripping or modifying DevOps Invent Private Limited ownership notices, branding, or
+    Human-Control safety guardrails for third-party monetization.
+
+4. MANDATORY HUMAN-CONTROL & SAFETY PRESERVATION
+Any permitted fork or contribution must preserve hard human-control primitives: explicit
+GPU/CPU cap sliders, thermal cutoff protection, instant pause on user demand, and sandboxed
+zero-retention container isolation. Unattended silent execution without explicit human consent
+violates this License.
+
+5. COMMERCIAL & ENTERPRISE LICENSING
+For enterprise cluster licensing, white-label marketplace operators, custom integrations, or
+commercial distribution rights, contact DevOps Invent Private Limited via:
+https://devopsinvent.org/marketplace
+
+6. DISCLAIMER
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
+IN NO EVENT SHALL DEVOPS INVENT PRIVATE LIMITED BE LIABLE FOR ANY CLAIM, DAMAGES, OR
+LIABILITY ARISING FROM THE SOFTWARE.

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SylvaWatt AI · Distributed Green AI Compute & Water Conservation Network</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <!-- LOGIN & ROLE ONBOARDING GATE -->
+  <section id="login-view" class="login-shell">
+    <div class="login-card">
+      <div>
+        <div class="brand-row">
+          <img src="img/mark.svg" alt="DevOps Invent SylvaWatt AI">
+          <div>
+            <span class="badge green">DevOps Invent · Open Green Mesh v0.1</span>
+            <h1 style="margin:6px 0 0; font-size:1.75rem;">SylvaWatt AI</h1>
+          </div>
+        </div>
+        <p style="margin:14px 0 10px; font-size:1.05rem; color:#d1fae5;">
+          Turn idle home PCs, GPUs &amp; Apple Silicon Macs into paid AI compute nodes — <strong>keeping 100% control with humans</strong> while saving Earth's fresh drinking water from hyperscale AI cooling towers.
+        </p>
+        <ul class="small muted" style="padding-left:18px; line-height:1.7;">
+          <li><strong>88% Provider Payout:</strong> Beat your local electricity bill with transparent net profit math.</li>
+          <li><strong>Zero Bloatware &amp; Thermal Guard:</strong> Set max GPU %, °C cutoff, and instant auto-pause when gaming.</li>
+          <li><strong>2.45L Fresh Water Saved / GPU-hr:</strong> Divert inference away from water-hungry mega data centers.</li>
+          <li><strong>Source-Available Non-Commercial License:</strong> Free for home users &amp; climate contributors · Owned by DevOps Invent Pvt Ltd.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 style="margin:0 0 6px; font-size:1.2rem;">Sign In to Live Demo Flow</h2>
+        <p class="small muted" style="margin:0 0 12px;">Use 1-click realistic demo roles or sign in manually below:</p>
+
+        <div class="role-grid">
+          <button type="button" class="role-btn" data-demo-email="provider@sylvawatt.io" data-demo-pass="demo123">
+            <strong>⚡ Home PC / GPU Provider (Earn Money)</strong>
+            <span class="small muted">Monitor telemetry, cap thermals, accept AI jobs &amp; simulate hardware ROI</span>
+          </button>
+          <button type="button" class="role-btn" data-demo-email="enterprise@acme-ai.io" data-demo-pass="demo123">
+            <strong>🏢 Enterprise AI Requester (58% Lower Cost)</strong>
+            <span class="small muted">Dispatch encrypted inference shards to verified green home nodes</span>
+          </button>
+          <button type="button" class="role-btn" data-demo-email="admin@sylvawatt.io" data-demo-pass="demo123">
+            <strong>🛡️ Network Operator Admin (Monetization &amp; Ads)</strong>
+            <span class="small muted">Track 12% brokerage fees, hardware/security affiliates &amp; sponsor ads</span>
+          </button>
+        </div>
+
+        <form id="login-form" style="margin-top:16px; display:flex; flex-direction:column; gap:10px;">
+          <input type="email" id="login-email" placeholder="Email (e.g. provider@sylvawatt.io)" value="provider@sylvawatt.io" required>
+          <input type="password" id="login-password" placeholder="Password (demo123)" value="demo123" required>
+          <button type="submit" class="btn primary lg">Launch SylvaWatt Control Center →</button>
+          <div id="login-error" class="small" style="color:#fca5a5;"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTHENTICATED APPLICATION SHELL -->
+  <div id="app-shell" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="brand-row">
+        <img src="img/mark.svg" alt="DevOps Invent">
+        <div>
+          <strong style="font-size:1.05rem;">SylvaWatt AI</strong>
+          <div class="small muted">by DevOps Invent</div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:12px;">
+        <div class="small muted">Signed In As</div>
+        <div id="user-name-label" style="font-weight:700; margin-top:2px;">-</div>
+        <div id="user-role-badge" class="badge green" style="margin-top:6px;">provider</div>
+      </div>
+
+      <nav class="nav-list" id="nav-list">
+        <button type="button" class="nav-item active" data-tab="overview">⚡ Node Control &amp; Telemetry</button>
+        <button type="button" class="nav-item" data-tab="advisor">📈 Earnings &amp; Power Advisor</button>
+        <button type="button" class="nav-item" data-tab="jobs">🌐 AI Compute Marketplace</button>
+        <button type="button" class="nav-item" data-tab="eco">💧 Water Scarcity Movement</button>
+        <button type="button" class="nav-item" data-tab="marketplace">🛡️ Hardware, Security &amp; Ads</button>
+        <button type="button" class="nav-item" data-tab="wallet">💳 Wallet &amp; AppSec Audit</button>
+        <button type="button" class="nav-item" data-tab="opensource">📜 Open-Source &amp; License</button>
+      </nav>
+
+      <div style="margin-top:auto; display:flex; flex-direction:column; gap:8px;">
+        <a href="install.html" class="btn sm">⚙️ 60s Web Installer</a>
+        <button type="button" id="logout-btn" class="btn sm">Sign Out</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div>
+          <span id="node-status-pill" class="badge green">EARNING_GREEN_MESH</span>
+          <h1 id="page-title" style="margin:6px 0 0; font-size:1.45rem;">Human-Controlled Node &amp; Live Telemetry</h1>
+        </div>
+        <div class="topbar-actions">
+          <button type="button" id="toggle-gaming-btn" class="btn warn sm">🎮 Test Gaming Auto-Pause</button>
+          <button type="button" id="toggle-node-btn" class="btn primary sm">⏸ Pause Compute Node</button>
+          <button type="button" id="run-bench-btn" class="btn sm">🚀 Live Benchmark</button>
+        </div>
+      </header>
+
+      <!-- TAB 1: OVERVIEW & TELEMETRY CONTROLS -->
+      <section id="tab-overview" class="tab-panel">
+        <div class="kpi-grid">
+          <div class="card highlight">
+            <div class="small muted">Projected Net Monthly Profit</div>
+            <div class="kpi-val" id="kpi-net-profit">$0.00/mo</div>
+            <div class="small" id="kpi-net-sub">After power &amp; 12% brokerage</div>
+          </div>
+          <div class="card">
+            <div class="small muted">Hardware Compute Power Score</div>
+            <div class="kpi-val" id="kpi-power-score">0 / 100</div>
+            <div class="small muted" id="kpi-model-tier">-</div>
+          </div>
+          <div class="card">
+            <div class="small muted">Your Node Fresh Water Saved</div>
+            <div class="kpi-val" style="color:#38bdf8;" id="kpi-node-water">0 L</div>
+            <div class="small muted" id="kpi-node-co2">0 kg CO₂ avoided</div>
+          </div>
+          <div class="card">
+            <div class="small muted">Available Wallet Balance</div>
+            <div class="kpi-val" style="color:#6ee7b7;" id="kpi-wallet">$0.00</div>
+            <div class="small muted">88% direct provider share</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <h3>🖥️ Live Host Utilization (AI-OS Telemetry Bridge)</h3>
+              <span class="badge water" id="tel-source-badge">live</span>
+            </div>
+            <p class="small muted" id="tel-hardware-model">Detecting host hardware...</p>
+
+            <div class="control-row">
+              <div class="control-head"><span>CPU / Core Utilization</span><span id="tel-cpu-val">0%</span></div>
+              <div class="meter-track"><div class="meter-fill" id="tel-cpu-bar" style="width:15%"></div></div>
+            </div>
+            <div class="control-row">
+              <div class="control-head"><span>Unified RAM / VRAM Used</span><span id="tel-ram-val">0 GB</span></div>
+              <div class="meter-track"><div class="meter-fill" id="tel-ram-bar" style="width:45%"></div></div>
+            </div>
+            <div class="control-row">
+              <div class="control-head"><span>Thermal Sensor &amp; Cutoff Guard</span><span id="tel-therm-val">Nominal (45°C)</span></div>
+              <div class="small muted" id="tel-ollama-models">Ollama Local Engine: checking...</div>
+            </div>
+          </div>
+
+          <div class="card highlight">
+            <h3>🎛️ Human Sovereignty &amp; Safety Ceilings</h3>
+            <p class="small muted">You stay in complete control. AI workloads immediately throttle or yield below your thresholds.</p>
+
+            <div class="control-row">
+              <div class="control-head">
+                <label for="ctrl-max-util">Max GPU / Compute Utilization Cap</label>
+                <span class="badge green" id="ctrl-max-util-val">68%</span>
+              </div>
+              <input type="range" id="ctrl-max-util" min="15" max="90" value="68">
+            </div>
+
+            <div class="control-row">
+              <div class="control-head">
+                <label for="ctrl-therm-cap">Thermal Cutoff Ceiling (Auto-Pause)</label>
+                <span class="badge amber" id="ctrl-therm-cap-val">74°C</span>
+              </div>
+              <input type="range" id="ctrl-therm-cap" min="60" max="85" value="74">
+            </div>
+
+            <div class="control-row" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+              <div>
+                <label class="small muted" for="ctrl-schedule">Operating Window</label>
+                <select id="ctrl-schedule">
+                  <option value="idle_and_night">Idle + Overnight (22:00–07:00)</option>
+                  <option value="idle_only">Idle Only (&gt;10m inactive)</option>
+                  <option value="always_capped">Always On (Strict Cap)</option>
+                </select>
+              </div>
+              <div>
+                <label class="small muted" for="ctrl-kwh-rate">Electricity Rate ($/kWh)</label>
+                <input type="number" id="ctrl-kwh-rate" step="0.01" min="0.02" max="0.60" value="0.14">
+              </div>
+            </div>
+
+            <div style="margin-top:10px; display:flex; flex-wrap:wrap; gap:12px;" class="small">
+              <label><input type="checkbox" id="chk-inf" checked> Encrypted LLM Inference</label>
+              <label><input type="checkbox" id="chk-lora" checked> Micro LoRA Tuning</label>
+              <label><input type="checkbox" id="chk-vis"> Zero-Retention Vision</label>
+            </div>
+
+            <button type="button" id="save-controls-btn" class="btn primary" style="width:100%; margin-top:14px;">Save Human Control Rules</button>
+          </div>
+        </div>
+
+        <div id="overview-sponsor-slot" class="sponsor-banner"></div>
+      </section>
+
+      <!-- TAB 2: EARNINGS & UPGRADE ADVISOR -->
+      <section id="tab-advisor" class="tab-panel hidden">
+        <div class="grid-2">
+          <div class="card">
+            <h3>⚡ Hardware Profile &amp; True Net Profit Calculator</h3>
+            <p class="small muted">Transparent economics: compare gross payout against exact electricity draw.</p>
+            <div style="display:flex; flex-direction:column; gap:12px; margin-top:12px;">
+              <div>
+                <label class="small muted" for="adv-tier">Workstation / GPU Class</label>
+                <select id="adv-tier"></select>
+              </div>
+              <div class="grid-2">
+                <div>
+                  <label class="small muted" for="adv-ram">System RAM (GB)</label>
+                  <input type="number" id="adv-ram" value="16" min="8" max="256" step="8">
+                </div>
+                <div>
+                  <label class="small muted" for="adv-hours">Idle Hours / Day</label>
+                  <input type="number" id="adv-hours" value="11" min="1" max="24">
+                </div>
+              </div>
+              <button type="button" id="calc-econ-btn" class="btn primary">Recalculate Net Profit &amp; Water Offset</button>
+            </div>
+
+            <div id="econ-breakdown" class="card highlight" style="margin-top:16px;"></div>
+          </div>
+
+          <div class="card highlight">
+            <h3>🚀 More Power = More Earnings (Upgrade ROI Advisor)</h3>
+            <p class="small muted">Select hardware or security upgrades to simulate score boost, enterprise workload unlocks, and payback period:</p>
+            <div id="upgrade-options-list" class="list-stack" style="margin:14px 0;"></div>
+            <div id="upgrade-sim-result" class="card" style="background:rgba(16,185,129,0.08); border-color:var(--line-strong);"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: COMPUTE MARKETPLACE -->
+      <section id="tab-jobs" class="tab-panel hidden">
+        <div class="grid-2" style="grid-template-columns: 1.55fr 1fr;">
+          <div>
+            <h3>🌐 Enterprise ↔ Home Node Compute Bridge</h3>
+            <p class="small muted">Accept verified, sandbox-isolated workloads from AI companies instead of sending jobs to data centers.</p>
+            <div id="jobs-list" class="list-stack"></div>
+          </div>
+
+          <div class="card highlight">
+            <h3>🏢 Dispatch Enterprise AI Workload</h3>
+            <p class="small muted">Switch roles or test submitting a distributed inference batch across SylvaWatt home nodes (saves ~58% cost vs centralized GPU cloud).</p>
+            <form id="post-job-form" style="display:flex; flex-direction:column; gap:10px; margin-top:12px;">
+              <input type="text" id="job-company" placeholder="Company Name" value="NordicFin AI Labs" required>
+              <input type="text" id="job-title" placeholder="Workload Title (e.g. 14B Contract Summarizer)" required>
+              <div class="grid-2">
+                <input type="number" id="job-vram" placeholder="Min VRAM GB" value="12" min="4" max="96">
+                <input type="number" id="job-rate" placeholder="Payout $/hr" value="1.10" step="0.05" min="0.30">
+              </div>
+              <input type="number" id="job-hours" placeholder="Estimated GPU Hours" value="5" min="1" max="100">
+              <button type="submit" class="btn water">Dispatch Green Compute Batch →</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: GREEN MOVEMENT & WATER SCARCITY -->
+      <section id="tab-eco" class="tab-panel hidden">
+        <div class="kpi-grid">
+          <div class="card highlight">
+            <div class="small muted">Global Fresh Water Saved</div>
+            <div class="kpi-val" style="color:#38bdf8;" id="eco-global-water">1,842,910 L</div>
+            <div class="small muted">Diverted from evaporative cooling</div>
+          </div>
+          <div class="card">
+            <div class="small muted">Data Center Cooling Power Avoided</div>
+            <div class="kpi-val" id="eco-global-kwh">180,540 kWh</div>
+            <div class="small muted">Relieves municipal power grids</div>
+          </div>
+          <div class="card">
+            <div class="small muted">CO₂ Emissions Reduced</div>
+            <div class="kpi-val" style="color:#6ee7b7;" id="eco-global-co2">142,900 kg</div>
+            <div class="small muted">Verified distributed telemetry</div>
+          </div>
+          <div class="card">
+            <div class="small muted">Active Home Nodes Protecting Earth</div>
+            <div class="kpi-val" id="eco-global-nodes">14,820</div>
+            <div class="small muted">Across 46 countries</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>💧 Why Distributed Home AI Solves the AI Water Scarcity Crisis</h3>
+          <p class="muted">Hyperscale AI clusters consume millions of liters of potable water every single day inside evaporative cooling towers. By running quantized inference &amp; micro-batches inside idle home machines already present worldwide, SylvaWatt achieves zero extra cooling tower evaporation.</p>
+          <div class="control-row">
+            <div class="control-head"><span>Hyperscale Data Center (Evaporative Cooling Overhead)</span><span class="badge red">2.45 L Fresh Water / GPU-hr</span></div>
+            <div class="meter-track"><div class="meter-fill warn" style="width:92%"></div></div>
+          </div>
+          <div class="control-row">
+            <div class="control-head"><span>SylvaWatt Green Home Mesh (Ambient Consumer Hardware)</span><span class="badge green">0.00 L Data-Center Water Waste</span></div>
+            <div class="meter-track"><div class="meter-fill" style="width:8%"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: HARDWARE, CYBERSECURITY & AD MONETIZATION -->
+      <section id="tab-marketplace" class="tab-panel hidden">
+        <div class="card highlight" style="margin-bottom:16px;">
+          <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px;">
+            <div>
+              <h3 style="margin:0;">💰 Multi-Stream Platform Monetization &amp; Revenue Engine</h3>
+              <p class="small muted" style="margin:4px 0 0;">Built-in business model: 12% brokerage spread + hardware/security affiliates + curated eco-ads + self-hosted licenses.</p>
+            </div>
+            <div class="kpi-val" style="margin:0; font-size:1.5rem;" id="rev-total">$0.00</div>
+          </div>
+          <div class="kpi-grid" style="margin:14px 0 0;">
+            <div class="card"><div class="small muted">12% Compute Brokerage</div><strong id="rev-brokerage">$0</strong></div>
+            <div class="card"><div class="small muted">Hardware &amp; Security Affiliates</div><strong id="rev-affiliate">$0</strong></div>
+            <div class="card"><div class="small muted">Eco-Partner Ad Revenue</div><strong id="rev-ads">$0</strong></div>
+            <div class="card"><div class="small muted">Self-Hosted Operator Licenses</div><strong id="rev-licenses">$0</strong></div>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h3 style="margin:0;">🛡️ Ecosystem Marketplace: Boost Compute Power &amp; Protect Your Home Network</h3>
+          <div class="topbar-actions">
+            <button type="button" class="btn sm mkt-filter" data-cat="all">All</button>
+            <button type="button" class="btn sm mkt-filter" data-cat="security">Cybersecurity Packs</button>
+            <button type="button" class="btn sm mkt-filter" data-cat="hardware">Hardware Boosters</button>
+          </div>
+        </div>
+        <div id="marketplace-grid" class="grid-3"></div>
+      </section>
+
+      <!-- TAB 6: WALLET & APPSEC AUDIT -->
+      <section id="tab-wallet" class="tab-panel hidden">
+        <div class="grid-2">
+          <div class="card">
+            <h3>💳 Provider Payouts &amp; Settlement Ledger</h3>
+            <p class="small muted">Instant cash payout options — real earnings, never forced store coupons.</p>
+            <div style="display:flex; gap:10px; align-items:center; margin:12px 0;">
+              <input type="number" id="payout-amount" value="25" min="5" step="5" style="max-width:130px;">
+              <select id="payout-method">
+                <option value="Stripe Express Payout">Stripe Express (Instant Bank)</option>
+                <option value="PayPal Settlement">PayPal</option>
+                <option value="Hardware Upgrade Credit (+5% Bonus)">Hardware Marketplace Credit (+5%)</option>
+              </select>
+              <button type="button" id="payout-btn" class="btn primary">Withdraw</button>
+            </div>
+            <div id="wallet-tx-list" class="list-stack" style="margin-top:14px;"></div>
+          </div>
+
+          <div class="card">
+            <h3>🔒 Zero-Trust Container Sandbox &amp; Human Override Audit</h3>
+            <p class="small muted">Live security verification ledger proving zero unauthorized network access and enforced thermal ceilings.</p>
+            <div id="sec-audit-list" class="list-stack" style="margin-top:12px;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 7: OPEN SOURCE & LICENSE -->
+      <section id="tab-opensource" class="tab-panel hidden">
+        <div class="card highlight">
+          <span class="badge green">DISA-NC 1.0 · DevOps Invent Private Limited</span>
+          <h2 style="margin:10px 0 8px;">Open-Source Movement for Water Protection &amp; Human Control</h2>
+          <p class="muted">Inspired by fast-moving community software: <strong>free &amp; open for personal home PC owners, researchers, and climate defenders</strong> — while legally protecting commercial &amp; enterprise ownership under <strong>DevOps Invent Private Limited</strong>.</p>
+          <div class="grid-2" style="margin-top:14px;">
+            <div class="card">
+              <h4>✅ Open for Individuals &amp; Contributors</h4>
+              <ul class="small muted" style="padding-left:18px; line-height:1.7;">
+                <li>Install on personal macOS / Linux / Windows nodes in 60s</li>
+                <li>Contribute GPU/thermal drivers (`nvidia-smi`, Metal, `rocm`)</li>
+                <li>Contribute regional Water-Savings &amp; Zero-Trust sandbox modules</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>🚫 Unauthorized Commercial / Enterprise Use Prohibited</h4>
+              <ul class="small muted" style="padding-left:18px; line-height:1.7;">
+                <li>Corporations &amp; SaaS hosts require a DevOps Invent Commercial License</li>
+                <li>Never remove Human-Control caps or thermal kill-switches</li>
+                <li>Exclusive IP ownership: <strong>DevOps Invent Private Limited</strong></li>
+              </ul>
+            </div>
+          </div>
+          <div style="margin-top:16px; padding:14px; border-radius:10px; background:rgba(0,0,0,0.35);" class="mono small">
+            # 1-Command Agent Install (INSTALL_FOR_AGENTS.md)<br>
+            git clone https://github.com/devopsinvent/sylvawatt-ai.git &amp;&amp; cd sylvawatt-ai &amp;&amp; npm install &amp;&amp; npm start
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
