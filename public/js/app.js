@@ -356,8 +356,72 @@ async function loadWallet() {
   }
 }
 
+async function loadViralReels() {
+  try {
+    const data = await api('api/viral-reels');
+    document.getElementById('reels-cast-grid').innerHTML = (data.characters || []).map((c) => `
+      <div class="card">
+        <div style="display:flex; gap:12px; align-items:center;">
+          <img src="${c.image}" alt="${c.name}" style="width:68px; height:68px; border-radius:14px; object-fit:cover;">
+          <div>
+            <strong>${c.name}</strong>
+            <div class="small muted">${c.role}</div>
+            <span class="badge blue" style="margin-top:4px;">${c.voice}</span>
+          </div>
+        </div>
+      </div>
+    `).join('');
+    document.getElementById('reels-list').innerHTML = (data.reels || []).map((r) => `
+      <div class="job-card" style="padding:16px;">
+        <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px;">
+          <div>
+            <span class="badge green">${r.hook_tag}</span>
+            <h4 style="margin:6px 0 4px;">${r.hook_title}</h4>
+            <div class="small muted">Cast: ${(r.cast || []).join(' • ')} · File: <code>${r.filename}</code></div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button type="button" class="btn sm speak-reel-btn" data-reel-id="${r.id}">🔊 Preview AI Voices</button>
+            <button type="button" class="btn primary sm queue-reel-btn" data-reel-id="${r.id}">📣 Queue All Platforms</button>
+          </div>
+        </div>
+        <p class="small muted" style="margin:10px 0 6px;">${r.caption_social}</p>
+        <div class="small" style="display:grid; gap:4px; margin-top:8px;">
+          ${(r.turns || []).map((t) => `<div><strong class="mono">${t.speaker.toUpperCase()}:</strong> ${t.text}</div>`).join('')}
+        </div>
+      </div>
+    `).join('');
+
+    document.querySelectorAll('.speak-reel-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const reel = (data.reels || []).find((x) => x.id === btn.dataset.reelId);
+        if (!reel || !window.speechSynthesis) return showToast('Run npm run reels for offline Kokoro-82M MP4 export');
+        window.speechSynthesis.cancel();
+        (reel.turns || []).forEach((t, idx) => {
+          const u = new SpeechSynthesisUtterance(t.text);
+          u.pitch = t.speaker === 'sylva' ? 1.15 : t.speaker === 'megacloud' ? 0.8 : 1.0;
+          u.rate = 1.02;
+          window.speechSynthesis.speak(u);
+          if (idx === 0) showToast(`Playing AI dialogue preview for ${reel.hook_title}`);
+        });
+      });
+    });
+
+    document.querySelectorAll('.queue-reel-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const res = await api('api/viral-reels/queue', {
+          method: 'POST',
+          body: JSON.stringify({ reelId: btn.dataset.reelId }),
+        });
+        showToast(`Queued ${res.entry.reelId} for ${res.entry.platforms.join(', ')}`);
+      });
+    });
+  } catch (err) {
+    console.warn(err.message);
+  }
+}
+
 async function refreshAllData() {
-  await Promise.all([loadTelemetryAndKpis(), loadAdvisorAndUpgrades(), loadJobs(), loadMarketplace(), loadWallet()]);
+  await Promise.all([loadTelemetryAndKpis(), loadAdvisorAndUpgrades(), loadJobs(), loadMarketplace(), loadWallet(), loadViralReels()]);
 }
 
 // Event bindings
@@ -382,6 +446,7 @@ const TAB_TITLES = {
   eco: 'Global Water Scarcity & Green AI Impact',
   marketplace: 'Hardware, Cybersecurity & Ad Monetization Hub',
   wallet: 'Provider Cash Payouts & AppSec Audit',
+  reels: 'AI Characters Speaking — Viral Reels Studio',
   opensource: 'Open-Source Movement & DevOps Invent Ownership',
 };
 

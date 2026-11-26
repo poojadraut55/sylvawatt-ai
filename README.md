@@ -58,6 +58,20 @@ Big Tech recently filed patents to borrow gamers' GPUs in exchange for "store cr
 
 ---
 
+## 🎬 AI Characters Speaking — Viral Reels Studio (`npm run reels`)
+
+Generate 9:16 vertical dialogue reels (`1080x1920`) featuring three animated speaking AI characters (**Sylva AI**, **Liam Node-X**, and **MegaCloud Bot**) powered by offline **Kokoro-82M** multi-voice synthesis, RMS lip-sync/waveform visualizers, cursor-zoom UI walkthroughs, and burnt-in kinetic captions:
+
+```bash
+# Render frame previews first
+npm run reels:preview
+
+# Export all 3 MP4 viral character reels (YouTube Shorts, Instagram Reels, LinkedIn, X, Facebook)
+npm run reels
+```
+
+---
+
 ## 💧 Join the Green Movement & Contribute (`CONTRIBUTING.md`)
 
 **Commercial & enterprise redistribution is strictly prohibited without a DevOps Invent license — see [`LICENSE`](LICENSE).**  

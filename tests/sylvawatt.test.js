@@ -125,6 +125,17 @@ test('Full E2E API Flow: Login -> Telemetry -> Controls -> Accept Job -> Wallet 
       body: JSON.stringify({ itemId: 'mkt_sec_shield' }),
     }).then((r) => r.json());
     assert.equal(clickRes.tracked, true);
+
+    // 7. Viral AI Character Reels API & publish queue
+    const reelsRes = await fetch(`${srv.baseUrl}/api/viral-reels`).then((r) => r.json());
+    assert.equal(reelsRes.characters.length, 3);
+    assert.ok(reelsRes.reels.length >= 3);
+    const queueRes = await fetch(`${srv.baseUrl}/api/viral-reels/queue`, {
+      method: 'POST',
+      headers: authHdr,
+      body: JSON.stringify({ reelId: reelsRes.reels[0].id }),
+    }).then((r) => r.json());
+    assert.equal(queueRes.queued, true);
   } finally {
     await srv.close();
     fs.rmSync(srv.dataDir, { recursive: true, force: true });

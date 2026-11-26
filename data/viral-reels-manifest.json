@@ -1,0 +1,392 @@
+[
+  {
+    "id": "reel_ai_1_gamer_vs_patent",
+    "filename": "reel_ai_1_gamer_vs_patent_1080x1920.mp4",
+    "hook_tag": "AI CHARACTERS DEBATE",
+    "hook_title": "MICROSOFT PATENTED YOUR GAMING PC?",
+    "cast": [
+      "MEGACLOUD BOT",
+      "LIAM NODE-X",
+      "SYLVA AI"
+    ],
+    "caption_social": "AI Characters Debate Big Tech's idle-GPU patent vs human ownership! With SylvaWatt AI (open-source), keep 88% net cash profit, hard thermal limits, <200ms gaming auto-pause & save 2.45L+ fresh water per GPU-hr.",
+    "turns": [
+      {
+        "speaker": "megacloud",
+        "screenshot": "01_login_onboarding.png",
+        "crop": [
+          [
+            0,
+            0,
+            1440,
+            900
+          ],
+          [
+            140,
+            80,
+            1160,
+            725
+          ]
+        ],
+        "cursor": [
+          [
+            0.45,
+            0.45
+          ],
+          [
+            0.68,
+            0.38
+          ]
+        ],
+        "text": "Big Tech patented renting your gaming PC while you sleep. We pay you in store credits!"
+      },
+      {
+        "speaker": "liam",
+        "screenshot": "03_gaming_autopilot_pause.png",
+        "crop": [
+          [
+            0,
+            0,
+            1440,
+            900
+          ],
+          [
+            220,
+            0,
+            1120,
+            700
+          ]
+        ],
+        "cursor": [
+          [
+            0.6,
+            0.25
+          ],
+          [
+            0.35,
+            0.14
+          ]
+        ],
+        "text": "Wait \u2014 ten bucks of electricity and heat on MY RTX 4090 just for coupons? No chance!"
+      },
+      {
+        "speaker": "sylva",
+        "screenshot": "02_telemetry_controls.png",
+        "crop": [
+          [
+            80,
+            60,
+            1280,
+            800
+          ],
+          [
+            200,
+            150,
+            1080,
+            675
+          ]
+        ],
+        "cursor": [
+          [
+            0.35,
+            0.45
+          ],
+          [
+            0.72,
+            0.56
+          ]
+        ],
+        "text": "Take back control with SylvaWatt AI! Keep 88 percent real cash payouts, strict temperature caps, and instant gaming auto-pause."
+      },
+      {
+        "speaker": "liam",
+        "screenshot": "08_opensource_human_pledge.png",
+        "crop": [
+          [
+            60,
+            40,
+            1320,
+            825
+          ],
+          [
+            180,
+            90,
+            1080,
+            675
+          ]
+        ],
+        "cursor": [
+          [
+            0.5,
+            0.55
+          ],
+          [
+            0.5,
+            0.35
+          ]
+        ],
+        "text": "Human power over AI! Clone SylvaWatt open-source right now on GitHub."
+      }
+    ]
+  },
+  {
+    "id": "reel_ai_2_water_scarcity_debate",
+    "filename": "reel_ai_2_water_scarcity_debate_1080x1920.mp4",
+    "hook_tag": "SAVE FRESH WATER",
+    "hook_title": "WHY AI DATA CENTERS DRINK RIVERS",
+    "cast": [
+      "MEGACLOUD BOT",
+      "SYLVA AI",
+      "LIAM NODE-X"
+    ],
+    "caption_social": "Hyperscale AI cooling towers evaporate fresh water daily. Watch Sylva AI & Node-X explain how shifting workloads onto idle home PCs saves 2.45L+ fresh water per GPU-hr & cuts cloud cost 58%!",
+    "turns": [
+      {
+        "speaker": "megacloud",
+        "screenshot": "06_water_scarcity_movement.png",
+        "crop": [
+          [
+            0,
+            0,
+            1440,
+            900
+          ],
+          [
+            140,
+            120,
+            1180,
+            738
+          ]
+        ],
+        "cursor": [
+          [
+            0.45,
+            0.35
+          ],
+          [
+            0.65,
+            0.52
+          ]
+        ],
+        "text": "Mega AI clusters need huge evaporative cooling towers burning millions of gallons of water every day."
+      },
+      {
+        "speaker": "sylva",
+        "screenshot": "06_water_scarcity_movement.png",
+        "crop": [
+          [
+            140,
+            120,
+            1180,
+            738
+          ],
+          [
+            220,
+            180,
+            1060,
+            662
+          ]
+        ],
+        "cursor": [
+          [
+            0.5,
+            0.45
+          ],
+          [
+            0.55,
+            0.68
+          ]
+        ],
+        "text": "Why drain fresh drinking water when millions of home desktops sit idle overnight?"
+      },
+      {
+        "speaker": "liam",
+        "screenshot": "05_enterprise_compute_bridge.png",
+        "crop": [
+          [
+            0,
+            0,
+            1440,
+            900
+          ],
+          [
+            140,
+            100,
+            1140,
+            712
+          ]
+        ],
+        "cursor": [
+          [
+            0.4,
+            0.4
+          ],
+          [
+            0.78,
+            0.48
+          ]
+        ],
+        "text": "SylvaWatt runs encrypted AI shards across home PCs \u2014 slashing startup cloud costs by fifty-eight percent!"
+      },
+      {
+        "speaker": "sylva",
+        "screenshot": "08_opensource_human_pledge.png",
+        "crop": [
+          [
+            60,
+            40,
+            1320,
+            825
+          ],
+          [
+            200,
+            100,
+            1060,
+            662
+          ]
+        ],
+        "cursor": [
+          [
+            0.5,
+            0.5
+          ],
+          [
+            0.52,
+            0.38
+          ]
+        ],
+        "text": "Protect Earth's water and keep AI in human hands. Join the open-source movement at devopsinvent dot org."
+      }
+    ]
+  },
+  {
+    "id": "reel_ai_3_upgrade_security_power",
+    "filename": "reel_ai_3_upgrade_security_power_1080x1920.mp4",
+    "hook_tag": "MORE POWER = MORE INCOME",
+    "hook_title": "UPGRADE YOUR RIG SAFELY FOR AI",
+    "cast": [
+      "LIAM NODE-X",
+      "SYLVA AI",
+      "MEGACLOUD BOT"
+    ],
+    "caption_social": "More PC power = higher AI income tiers \u2014 with Zero-Trust firewall isolation! Simulate +32GB RAM or RTX 4090 ROI payback inside SylvaWatt AI (DISA-NC 1.0 open-source).",
+    "turns": [
+      {
+        "speaker": "liam",
+        "screenshot": "04_earnings_upgrade_advisor.png",
+        "crop": [
+          [
+            0,
+            0,
+            1440,
+            900
+          ],
+          [
+            420,
+            100,
+            1000,
+            625
+          ]
+        ],
+        "cursor": [
+          [
+            0.45,
+            0.5
+          ],
+          [
+            0.72,
+            0.68
+          ]
+        ],
+        "text": "If I add thirty-two gigs of RAM or upgrade my GPU, how much extra net cash can my home rig earn?"
+      },
+      {
+        "speaker": "sylva",
+        "screenshot": "04_earnings_upgrade_advisor.png",
+        "crop": [
+          [
+            420,
+            100,
+            1000,
+            625
+          ],
+          [
+            480,
+            140,
+            940,
+            588
+          ]
+        ],
+        "cursor": [
+          [
+            0.6,
+            0.45
+          ],
+          [
+            0.76,
+            0.72
+          ]
+        ],
+        "text": "SylvaWatt calculates your real kilowatt-hour power cost and exact ROI payback, unlocking seventy-billion model tiers!"
+      },
+      {
+        "speaker": "megacloud",
+        "screenshot": "07_hardware_security_ads_hub.png",
+        "crop": [
+          [
+            0,
+            0,
+            1440,
+            900
+          ],
+          [
+            160,
+            120,
+            1140,
+            712
+          ]
+        ],
+        "cursor": [
+          [
+            0.45,
+            0.4
+          ],
+          [
+            0.55,
+            0.58
+          ]
+        ],
+        "text": "Wait \u2014 isn't running outside AI workloads risky on a home internet router?"
+      },
+      {
+        "speaker": "sylva",
+        "screenshot": "07_hardware_security_ads_hub.png",
+        "crop": [
+          [
+            160,
+            120,
+            1140,
+            712
+          ],
+          [
+            240,
+            180,
+            1040,
+            650
+          ]
+        ],
+        "cursor": [
+          [
+            0.45,
+            0.55
+          ],
+          [
+            0.48,
+            0.66
+          ]
+        ],
+        "text": "Every job stays inside Zero-Trust sandboxes with no LAN access. Star and clone poojadraut55 sylvawatt-ai on GitHub!"
+      }
+    ]
+  }
+]

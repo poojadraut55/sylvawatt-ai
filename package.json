@@ -12,7 +12,9 @@
   "scripts": {
     "start": "NODE_ENV=production node src/server.js",
     "dev": "node --watch src/server.js",
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "reels": "python3 scripts/generate_viral_character_reels.py",
+    "reels:preview": "python3 scripts/generate_viral_character_reels.py --preview"
   },
   "dependencies": {
     "express": "^4.22.3"

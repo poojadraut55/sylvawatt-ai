@@ -7,6 +7,8 @@
 /** REST API Router for SylvaWatt AI distributed compute, telemetry, economics & marketplace. */
 const express = require('express');
 const crypto = require('node:crypto');
+const fs = require('node:fs');
+const path = require('node:path');
 const { verifyPassword, parseCookies } = require('../lib/auth');
 const { HARDWARE_TIERS, UPGRADE_MODULES, calculateNodeEconomics, simulateUpgrades } = require('../services/economics');
 
@@ -365,6 +367,51 @@ function createApiRouter({ config, store, telemetry, sessions }) {
     store.data.walletTransactions.unshift(tx);
     store.save();
     return res.json({ balanceUsd: req.user.walletBalanceUsd, transaction: tx });
+  });
+
+  // ── Viral AI Character Speaking Reels Studio ─────────────────────────────
+  router.get('/viral-reels', (_req, res) => {
+    const manifestPath = path.resolve(__dirname, '../../data/viral-reels-manifest.json');
+    let reels = [];
+    if (fs.existsSync(manifestPath)) {
+      try {
+        reels = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+      } catch {
+        reels = [];
+      }
+    }
+    res.json({
+      characters: [
+        { id: 'sylva', name: 'Sylva AI', role: 'Nature & Water Guardian', voice: 'Kokoro af_heart', image: 'assets/characters/sylva_guardian.png' },
+        { id: 'liam', name: 'Liam Node-X', role: 'Home RTX PC Owner', voice: 'Kokoro am_liam', image: 'assets/characters/liam_gamer_node.png' },
+        { id: 'megacloud', name: 'MegaCloud Bot', role: 'Big Tech Data Center', voice: 'Kokoro am_onyx', image: 'assets/characters/megacloud_bot.png' },
+      ],
+      reels,
+      cliCommand: 'npm run reels',
+      platforms: ['YouTube Shorts', 'Instagram Reels', 'LinkedIn', 'X (Twitter)', 'Facebook Group'],
+      publishQueue: store.data.socialQueue || [],
+    });
+  });
+
+  router.post('/viral-reels/queue', requireAuth, (req, res) => {
+    const { reelId, platforms } = req.body || {};
+    if (!reelId) return res.status(400).json({ error: 'Provide reelId' });
+    const targetPlatforms = Array.isArray(platforms) && platforms.length
+      ? platforms.map(String)
+      : ['YouTube Shorts', 'Instagram Reels', 'LinkedIn', 'X', 'Facebook'];
+    if (!Array.isArray(store.data.socialQueue)) store.data.socialQueue = [];
+    const entry = {
+      id: `pub_${crypto.randomBytes(4).toString('hex')}`,
+      reelId: String(reelId),
+      platforms: targetPlatforms,
+      status: 'READY_FOR_DISPATCH',
+      queuedBy: req.user.email,
+      createdAt: new Date().toISOString(),
+    };
+    store.data.socialQueue.unshift(entry);
+    store.data.socialQueue = store.data.socialQueue.slice(0, 25);
+    store.save();
+    return res.json({ queued: true, entry });
   });
 
   // ── 60-Second Self-Hosted Installer Finalizer ────────────────────────────
